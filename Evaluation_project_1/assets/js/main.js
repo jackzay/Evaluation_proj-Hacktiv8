@@ -257,11 +257,8 @@ function show(l) {
 
     l.forEach(function (todo) { 
       let check = todo.checked ? 'checked' : null;
-      let idx = l.findIndex(obj => {
-        return obj.id = todo.id;
-      });
 
-      var hapus =`<button type="button" class="btn btn-danger" onclick="hapus(${idx})">Hapus</button>`;
+      var hapus =`<button type="button" class="btn btn-danger" onclick="hapus(${todo.id})">Hapus</button>`;
       if (todo.checked) {
         list_todo.innerHTML += `<tr><td style = "width : 500px";>
         
@@ -335,10 +332,16 @@ function add(id) {
 
 function hapus(id) {
   let data_todo = JSON.parse(localStorage.getItem('ToDo'));
-    data_todo.splice(id,1);
+  let find = data_todo.findIndex(obj => {
+    return obj.id == id;
+  })
+  console.log(find);
+  console.log(id);
+  console.log(data_todo);
+  data_todo.splice(find,1);
     
-    localStorage.setItem('ToDo', JSON.stringify(data_todo));
-    show(data_todo);
+  localStorage.setItem('ToDo', JSON.stringify(data_todo));
+  show(data_todo);
 }
 // ========= end CRD Funtion ============
 
