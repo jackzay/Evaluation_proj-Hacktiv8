@@ -287,7 +287,6 @@ function checkbox(id) {
   var check = JSON.parse(localStorage.getItem('ToDo'));
   var checkbox = document.getElementById('check-'+id);
 
-  // tenary operator 
   let find = check.findIndex(obj => {
     return obj.id == id;
   })
